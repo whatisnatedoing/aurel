@@ -18,58 +18,45 @@
   --border: #2a2620;
   --subtle: #1e1c16;
   --text: #f0ead8;
-  --text-muted: #8a7d60;
 }
 
-* {
-  box-sizing: border-box;
-}
-
+* { box-sizing: border-box; }
 html, body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Jost', system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   overflow-x: hidden;
 }
+/* Prevent body scroll behind modals on mobile */
+body.modal-open { overflow: hidden; }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--gold-faint); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gold-muted); }
 
-/* Range slider */
 input[type='range'] {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  cursor: pointer;
-  width: 100%;
+  -webkit-appearance: none; appearance: none;
+  background: transparent; cursor: pointer; width: 100%;
 }
 input[type='range']::-webkit-slider-runnable-track {
-  background: var(--gold-faint);
-  height: 2px;
-  border-radius: 1px;
+  background: var(--gold-faint); height: 2px; border-radius: 1px;
 }
 input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--gold);
-  margin-top: -6px;
-  transition: transform 0.15s;
+  -webkit-appearance: none; appearance: none;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--gold); margin-top: -7px; transition: transform 0.15s;
 }
 input[type='range']::-webkit-slider-thumb:hover { transform: scale(1.2); }
 
-/* Text input */
-input[type='text'] {
-  background: transparent;
-  outline: none;
-  color: var(--text);
-  font-family: 'Cormorant Garamond', serif;
-}
+input[type='text'] { background: transparent; outline: none; color: var(--text); font-family: 'Cormorant Garamond', serif; }
 input[type='text']::placeholder { color: var(--gold-faint); }
+input[type='email'],
+input[type='password'] { background: transparent; outline: none; color: var(--text); font-family: 'Jost', sans-serif; }
+
+/* Touch — bigger tap targets on mobile */
+@media (max-width: 768px) {
+  button { min-height: 36px; }
+  input[type='range']::-webkit-slider-thumb { width: 20px; height: 20px; margin-top: -9px; }
+}
